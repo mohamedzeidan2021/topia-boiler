@@ -11,6 +11,7 @@ const Home = () => {
     try {
       const result = await backendAPI.get("/dropped-asset");
       if (result.data.success) {
+        console.log("works");
         setDroppedAsset(result.data.droppedAsset);
       } else {
         return console.log("Error getting data object");
@@ -20,7 +21,7 @@ const Home = () => {
     }
   };
 
-  if(!hasSetupBackend) return <div />
+  if (!hasSetupBackend) return <div />;
 
   return (
     <div className="container p-6 flex items-center justify-start">
@@ -39,9 +40,7 @@ const Home = () => {
           )}
         </div>
 
-        <button onClick={handleGetDroppedAsset}>
-          Get Dropped Asset Details
-        </button>
+        <button onClick={() => {handleGetDroppedAsset()}}>Get Dropped Asset Details</button>
         {droppedAsset && (
           <div className="flex flex-col w-full items-start">
             <p className="mt-4 mb-2">
